@@ -38,7 +38,7 @@ def get_secret(secret_name, region_name="us-east-1"):
 
 
 sentry_sdk.init(
-    dsn="https://5a1c0d5d05426416fb9835621ad41de5@o4508730975322112.ingest.de.sentry.io/4508730981417040",
+    dsn="https://e2cb0e563e404581afce29bbce10b790@o4508745391734784.ingest.us.sentry.io/4508745396649984",
     # Add data like request headers and IP for users,
     # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
     send_default_pii=True,
