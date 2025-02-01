@@ -41,5 +41,11 @@ jobs:
         zip -r ../lambda_function.zip .
         cd ..
 
+    - name: Uploading that to lambda
+      id: Uploading
+      
+      run: |
+        aws lambda update-function-code --function-name todo --zip-file fileb://lambda_function.zip
+
     
 
