@@ -2,12 +2,16 @@ name: Deploy to AWS Lmmbda
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - main
+
+  workflow_dispatch:
 
 env:
   AWS_REGION: us-west-2
   
 permissions:
+  id-token: write
   contents: read
 
 jobs:
