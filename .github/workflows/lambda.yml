@@ -7,8 +7,6 @@ on:
 
   workflow_dispatch:
 
-env:
-  AWS_REGION: us-west-2
   
 permissions:
   id-token: write
@@ -28,7 +26,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-        aws-region: ${{ env.AWS_REGION }}
+        aws-region: ${{ secrets.AWS_REGION }}
 
 
     - name: Making Zip of the code with package
@@ -48,7 +46,7 @@ jobs:
       id: Uploading
       
       run: |
-        aws lambda update-function-code --function-name todo --zip-file fileb://lambda_function.zip
+        aws lambda update-function-code --function-name ${{ vars.LAMBDA_FUNCTION_NAME }} --zip-file fileb://lambda_function.zip
 
     
 
