@@ -67,8 +67,8 @@ DB_USER, DB_PASSWORD = get_secret(secret_name, region)
 # CORS headers
 CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',  # Allows requests from any domain
-    # 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',  # Allowed HTTP methods
-    # 'Access-Control-Allow-Headers': 'Content-Type'  # Allow Content-Type header
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',  # Allowed HTTP methods
+    'Access-Control-Allow-Headers': 'Content-Type'  # Allow Content-Type header
 }
 
 def connect_to_db():
