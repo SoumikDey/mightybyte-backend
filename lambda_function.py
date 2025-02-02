@@ -38,7 +38,7 @@ def get_secret(secret_name, region_name="us-east-1"):
 
 
 sentry_sdk.init(
-    dsn="https://e2cb0e563e404581afce29bbce10b790@o4508745391734784.ingest.us.sentry.io/4508745396649984",
+    dsn=os.environ['SENTRY_DSN'],
     # Add data like request headers and IP for users,
     # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
     send_default_pii=True,
@@ -67,8 +67,8 @@ DB_USER, DB_PASSWORD = get_secret(secret_name, region)
 # CORS headers
 CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',  # Allows requests from any domain
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',  # Allowed HTTP methods
-    'Access-Control-Allow-Headers': 'Content-Type'  # Allow Content-Type header
+    # 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',  # Allowed HTTP methods
+    # 'Access-Control-Allow-Headers': 'Content-Type'  # Allow Content-Type header
 }
 
 def connect_to_db():

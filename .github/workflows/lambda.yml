@@ -1,4 +1,4 @@
-name: Deploy to AWS Lmmbda
+name: Deploy to AWS Lambda
 
 on:
   push:
@@ -7,6 +7,9 @@ on:
 
   workflow_dispatch:
 
+env:
+  AWS_REGION: us-west-2
+  LAMBDA_FUNCTION_NAME: prod-mightybyte-lambda
   
 permissions:
   id-token: write
@@ -46,6 +49,7 @@ jobs:
       id: Uploading
       
       run: |
-        aws lambda update-function-code --function-name ${{ vars.LAMBDA_FUNCTION_NAME }} --zip-file fileb://lambda_function.zip
+        aws lambda update-function-code --function-name ${{ env.LAMBDA_FUNCTION_NAME }} --zip-file fileb://lambda_function.zip
+
     
 
