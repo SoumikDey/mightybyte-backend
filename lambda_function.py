@@ -100,7 +100,7 @@ def create_task(event, context):
             return {
                 'statusCode': 400,
                 'body': json.dumps({'message': 'Description is required'}),
-                'headers': CORS_HEADERS  # Add CORS headers
+                # 'headers': CORS_HEADERS  # Add CORS headers
             }
         
         # Connect to the database
@@ -127,7 +127,7 @@ def create_task(event, context):
                 'description': description,
                 'created_at': result[1].isoformat()
             }),
-            'headers': CORS_HEADERS  # Add CORS headers
+            # 'headers': CORS_HEADERS  # Add CORS headers
         }
 
     except Exception as e:
@@ -135,7 +135,7 @@ def create_task(event, context):
         return {
             'statusCode': 500,
             'body': json.dumps({'message': 'Internal server error', 'error': str(e)}),
-            'headers': CORS_HEADERS  # Add CORS headers
+            # 'headers': CORS_HEADERS  # Add CORS headers
         }
 
 def get_tasks(event, context):
@@ -172,7 +172,7 @@ def get_tasks(event, context):
         return {
             'statusCode': 200,
             'body': json.dumps(tasks_list),
-            'headers': CORS_HEADERS  # Add CORS headers
+            # 'headers': CORS_HEADERS  # Add CORS headers
         }
 
     except Exception as e:
@@ -180,7 +180,7 @@ def get_tasks(event, context):
         return {
             'statusCode': 500,
             'body': json.dumps({'message': 'Internal server error', 'error': str(e)}),
-            'headers': CORS_HEADERS  # Add CORS headers
+            # 'headers': CORS_HEADERS  # Add CORS headers
         }
 
 def lambda_handler(event, context):
@@ -194,7 +194,7 @@ def lambda_handler(event, context):
         return {
             'statusCode': 200,
             'body': '',  # Empty body for OPTIONS response
-            'headers': CORS_HEADERS  # Respond with CORS headers for OPTIONS
+            # 'headers': CORS_HEADERS  # Respond with CORS headers for OPTIONS
         }
 
     # Handle POST and GET requests
@@ -206,5 +206,5 @@ def lambda_handler(event, context):
     return {
         'statusCode': 404,
         'body': json.dumps({'message': 'Not Found'}),
-        'headers': CORS_HEADERS  # Add CORS headers for 404 response
+        # 'headers': CORS_HEADERS  # Add CORS headers for 404 response
     }
