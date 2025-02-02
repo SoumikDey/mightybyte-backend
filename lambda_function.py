@@ -2,7 +2,6 @@ import json
 import psycopg2
 import os
 
-import sentry_sdk
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 
 import boto3
