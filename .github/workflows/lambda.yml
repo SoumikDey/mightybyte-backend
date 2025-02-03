@@ -32,7 +32,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pytest
+        pip install pytest, psycopg2,boto
 
     - name: Run tests
       run: |
