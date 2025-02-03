@@ -6,7 +6,10 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
 from lambda_function import lambda_handler
 
 def test_lambda_get_method():
-    event = {"httpMethod": "GET"}
+    event = {
+        "httpMethod": "GET",
+        "resource": "/tasks"  
+    }
     try:
         response = lambda_handler(event, None)
         assert response["statusCode"] == 200, "GET method should return status code 200"
@@ -15,7 +18,10 @@ def test_lambda_get_method():
         pytest.fail("GET method not implemented in lambda_function.py")
 
 def test_lambda_post_method():
-    event = {"httpMethod": "POST"}
+    event = {
+        "httpMethod": "POST",
+        "resource": "/tasks"  
+    }
     try:
         response = lambda_handler(event, None)
         assert response["statusCode"] == 200, "POST method should return status code 200"

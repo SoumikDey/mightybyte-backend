@@ -34,6 +34,14 @@ jobs:
       run: |
         pip install pytest, psycopg2,boto
 
+    - name: Exporting Envs
+      run: |
+        export DB_HOST=${{ vars.DB_HOST }}
+        export DB_NAME=${{ vars.DB_NAME }}
+        export REGION=${{ vars.REGION}}
+        export SECRET_NAME=${{ vars.SECRET_NAME }}
+        export SENTRY_DSN=${{ vars.SENTRY_DSN }}
+
     - name: Run tests
       run: |
         pytest tests/lambda_test.py
