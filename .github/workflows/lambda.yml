@@ -38,16 +38,13 @@ jobs:
         pip install sentry-sdk
 
 
-    - name: Exporting Envs
+    - name: Exporting Envs and Run tests
       run: |
         export DB_HOST=${{ vars.DB_HOST }}
         export DB_NAME=${{ vars.DB_NAME }}
         export REGION=${{ vars.REGION}}
         export SECRET_NAME=${{ vars.SECRET_NAME }}
         export SENTRY_DSN=${{ vars.SENTRY_DSN }}
-
-    - name: Run tests
-      run: |
         pytest tests/lambda_test.py
 
     - name: Configure AWS credentials
