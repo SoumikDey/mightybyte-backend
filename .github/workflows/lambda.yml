@@ -32,7 +32,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pytest, psycopg2,boto
+        pip install pytest
+        pip install psycopg2
+        pip install boto
+        pip install sentry-sdk
+
 
     - name: Exporting Envs
       run: |
