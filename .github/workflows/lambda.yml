@@ -25,16 +25,27 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install pytest
+
+    - name: Run tests
+      run: |
+        pytest tests/lambda_test.py
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-
     - name: Making Zip of the code with package
       id: zipping
-      
       run: |
         rm -rf lambda_function 
         mkdir lambda_function
@@ -47,9 +58,5 @@ jobs:
 
     - name: Uploading that to lambda
       id: Uploading
-      
       run: |
         aws lambda update-function-code --function-name ${{ env.LAMBDA_FUNCTION_NAME }} --zip-file fileb://lambda_function.zip
-
-    
-
